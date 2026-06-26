@@ -11,16 +11,24 @@
 
   <!--
   ════════════════════════════════════════════
-  GOOGLE FORM SETUP (to connect to Sheets)
+  WAITLIST FORM (existing)
   ════════════════════════════════════════════
-  1. Go to forms.google.com → create a new form
-  2. Add two questions: "Email" (Short answer) and "Phone" (Short answer)
-  3. Click the ⋮ menu → "Get pre-filled link"
+  Current form action + entry IDs are already filled in below.
+
+  ════════════════════════════════════════════
+  SURVEY FORM SETUP (new — connect to a second Google Form)
+  ════════════════════════════════════════════
+  1. Go to forms.google.com → create a NEW form
+  2. Add three questions:
+       Q1 — "What's the biggest frustration you have with your wardrobe today?" (Paragraph / long answer)
+       Q2 — "Which sounds most useful to you?" (Multiple choice — pick the radio options listed in the HTML)
+       Q3 — "How many clothing items do you think you own?" (Multiple choice)
+  3. Click ⋮ → "Get pre-filled link"
   4. Fill in dummy values, click "Get Link", copy the URL
-  5. From that URL, extract:
-     - The form action: replace "/viewform?..." with "/formResponse"
-     - The entry IDs: the "entry.XXXXXXXXX" parts in the URL
-  6. Replace the three placeholder values in the <script> at the bottom
+  5. From that URL extract:
+       - SURVEY_FORM_ACTION: replace "/viewform?..." with "/formResponse"
+       - SURVEY_ENTRY_Q1 / Q2 / Q3: the entry.XXXXXXXXX parts
+  6. Replace the four placeholder values in the <script> at the bottom
   ════════════════════════════════════════════
   -->
 
@@ -64,7 +72,6 @@
       overflow: hidden;
     }
 
-    /* subtle radial glow behind the logo */
     .hero::before {
       content: '';
       position: absolute;
@@ -82,9 +89,6 @@
       margin: 0 auto 36px;
       position: relative;
       z-index: 1;
-      /* screen blend mode makes the logo's navy background
-         vanish into the hero's matching navy, leaving only
-         the gold hanger and sparkles visible */
       mix-blend-mode: screen;
       object-fit: contain;
     }
@@ -373,6 +377,7 @@
       flex-direction: column;
       align-items: center;
       padding: 16px 0;
+      width: 100%;
     }
 
     .success.visible { display: flex; }
@@ -419,6 +424,215 @@
     }
 
     /* ─────────────────────────────────────
+       SURVEY
+    ───────────────────────────────────── */
+    .survey-divider {
+      width: 40px;
+      height: 1px;
+      background: #dfd8cf;
+      margin: 36px auto;
+      animation: fadeUp 0.45s 0.3s ease both;
+    }
+
+    .survey-container {
+      width: 100%;
+      text-align: left;
+      animation: fadeUp 0.45s 0.35s ease both;
+    }
+
+    .survey-prompt {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--espresso);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .survey-sub {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--taupe);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .survey-form {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .survey-question {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .question-label {
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.45;
+    }
+
+    .question-hint {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--taupe);
+      line-height: 1.5;
+      margin-top: -6px;
+    }
+
+    .survey-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--sand);
+      border: 1px solid #dfd8cf;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--espresso);
+      outline: none;
+      resize: vertical;
+      min-height: 100px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .survey-textarea::placeholder { color: #c9bdb4; }
+
+    .survey-textarea:focus {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(178,134,117,0.12);
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 11px 14px;
+      border-radius: 3px;
+      border: 1px solid #dfd8cf;
+      background: var(--sand);
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .radio-option:hover {
+      border-color: var(--terracotta);
+      background: #f0ebe3;
+    }
+
+    .radio-option input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid #c4b5a8;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: border-color 0.18s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .radio-option input[type="radio"]::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .radio-option input[type="radio"]:checked {
+      border-color: var(--terracotta);
+    }
+
+    .radio-option input[type="radio"]:checked::after {
+      opacity: 1;
+    }
+
+    .radio-option:has(input:checked) {
+      border-color: var(--terracotta);
+      background: rgba(178,134,117,0.07);
+    }
+
+    .radio-label {
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--espresso);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    .survey-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .skip-link {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      color: #c4b5a8;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.18s;
+    }
+
+    .skip-link:hover { color: var(--taupe); }
+
+    /* survey done state */
+    .survey-done {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 24px 0 8px;
+      text-align: center;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .survey-done.visible { display: flex; }
+
+    .survey-done-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--espresso);
+    }
+
+    .survey-done-body {
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--walnut);
+    }
+
+    /* ─────────────────────────────────────
        FOOTER
     ───────────────────────────────────── */
     footer {
@@ -431,19 +645,21 @@
       border-top: 1px solid #e5dfd6;
     }
 
-footer div {
+    footer div {
       padding-top: 10px;
+    }
 
-}
     /* ─────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────── */
     @media (max-width: 520px) {
       .hero { padding: 72px 20px 88px; }
       .features { padding: 56px 20px; }
-      .features-grid { padding: 0px 10px;
-					display: flex;
-					flex-direction: column; }
+      .features-grid {
+        padding: 0px 10px;
+        display: flex;
+        flex-direction: column;
+      }
       .form-section { padding: 72px 25px 80px; }
     }
 
@@ -456,10 +672,7 @@ footer div {
 
   <!-- ── HERO ── -->
   <section class="hero">
-
-    <!-- Logo: place your logo file as "logo.png" in the same folder as this HTML -->
-	<img src="./navyHangerLogoEdited.png" class="logo-mark" alt="logo">
-				<defs>
+    <img src="./navyHangerLogoEdited.png" class="logo-mark" alt="logo">
 
     <p class="eyebrow">Wardrobe Inventory &amp; Logistics</p>
 
@@ -467,8 +680,8 @@ footer div {
 
     <p class="hero-sub">
       Your closet, fully accounted for. Know what you own,
-      where it is, and what state it's in & Stop feeling like you have Nothing
-				To Wear!
+      where it is, and what state it's in &amp; Stop feeling like you have Nothing
+      To Wear!
     </p>
 
     <a href="#waitlist" class="hero-cta">Join the Waitlist</a>
@@ -508,7 +721,6 @@ footer div {
   <!-- ── WAITLIST FORM ── -->
   <section class="form-section" id="waitlist">
 
-    <!-- form-container: the entire block (header + form) hides on success -->
     <div id="form-container">
       <p class="section-label">Early Access</p>
       <h2>Join the Waitlist</h2>
@@ -553,7 +765,10 @@ footer div {
       </form>
     </div>
 
+    <!-- ── SUCCESS + SURVEY ── -->
     <div class="success" id="success" role="alert" aria-live="polite">
+
+      <!-- Confirmation -->
       <div class="check-circle">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
           <path d="M4.5 11.5l4.5 4.5 8.5-9" stroke="#b28675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -564,40 +779,149 @@ footer div {
         Congrats on joining the waitlist for Nothing To Wear.<br>
         You'll be emailed as soon as we're ready for you.
       </p>
+
+      <!-- Divider into survey -->
+      <div class="survey-divider"></div>
+
+      <!-- Survey -->
+      <div class="survey-container" id="survey-container">
+        <p class="survey-prompt">Want to participate in user research?</p>
+        <p class="survey-sub">3 quick questions — takes under 2 minutes.</p>
+
+        <form class="survey-form" id="survey-form" onsubmit="handleSurveySubmit(event)" novalidate>
+
+          <!-- Q1: Open text -->
+          <div class="survey-question">
+            <label class="question-label" for="survey-q1">
+              What's the biggest frustration you have with your wardrobe today?
+            </label>
+            <p class="question-hint">Your answer in your own words — no wrong answers.</p>
+            <textarea
+              class="survey-textarea"
+              id="survey-q1"
+              name="q1"
+              placeholder="e.g. I forget what I own, nothing matches, laundry piles up…"
+            ></textarea>
+          </div>
+
+          <!-- Q2: Multiple choice -->
+          <div class="survey-question">
+            <label class="question-label">Which sounds most useful to you?</label>
+            <div class="radio-group" role="radiogroup" aria-label="Most useful feature">
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Keeping track of what I own" />
+                <span class="radio-label">Keeping track of what I own</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Organizing clothing by category" />
+                <span class="radio-label">Organizing clothing by category</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Tracking laundry and garment care" />
+                <span class="radio-label">Tracking laundry and garment care</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Travel packing" />
+                <span class="radio-label">Travel packing</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Outfit planning" />
+                <span class="radio-label">Outfit planning</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Understanding my wardrobe habits" />
+                <span class="radio-label">Understanding my wardrobe habits</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Borrowing and sharing clothes" />
+                <span class="radio-label">Borrowing and sharing clothes</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q2" value="Learning about fabrics and garment care" />
+                <span class="radio-label">Learning about fabrics and garment care</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q3: Wardrobe size -->
+          <div class="survey-question">
+            <label class="question-label">How many clothing items do you think you own?</label>
+            <div class="radio-group" role="radiogroup" aria-label="Number of clothing items">
+              <label class="radio-option">
+                <input type="radio" name="q3" value="Under 50" />
+                <span class="radio-label">Under 50</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q3" value="50–100" />
+                <span class="radio-label">50–100</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q3" value="100–250" />
+                <span class="radio-label">100–250</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q3" value="250–500" />
+                <span class="radio-label">250–500</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="q3" value="500+" />
+                <span class="radio-label">500+</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="survey-actions">
+            <button type="submit" class="submit-btn" id="survey-submit-btn">
+              <span class="btn-label">Submit</span>
+              <span class="btn-spinner" aria-hidden="true">
+                <span class="ring"></span>
+              </span>
+            </button>
+            <button type="button" class="skip-link" onclick="skipSurvey()">No thanks, skip</button>
+          </div>
+
+        </form>
+
+        <!-- Survey done -->
+        <div class="survey-done" id="survey-done">
+          <p class="survey-done-title">Thank you.</p>
+          <p class="survey-done-body">
+            Your input goes directly into shaping Nothing To Wear.<br>
+            We'll be in touch.
+          </p>
+        </div>
+
+      </div>
     </div>
 
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
-    &copy; 2026 Nothing To Wear &nbsp;&middot;&nbsp; Coming Soon <div>Founded by Arianna Choza</div> 
+    &copy; 2026 Nothing To Wear &nbsp;&middot;&nbsp; Coming Soon
+    <div>Founded by Arianna Choza</div>
   </footer>
 
   <script>
     /*
     ─────────────────────────────────────────────────────
-    STEP 1: Create a Google Form at forms.google.com
-      - Short answer Q1: label it "Email"
-      - Short answer Q2: label it "Phone"
-
-    STEP 2: Click ⋮ → "Get pre-filled link"
-      Fill dummy values, click "Get Link", copy the URL.
-      It looks like:
-        https://docs.google.com/forms/d/e/XXXXX/viewform?entry.111111=test%40test.com&entry.222222=5550000
-
-    STEP 3: Replace the three values below:
-      - FORM_ACTION: swap "viewform" → "formResponse" at the end
-      - ENTRY_EMAIL: the entry.XXXXXXX for the email field
-      - ENTRY_PHONE: the entry.YYYYYYY for the phone field
-
-
-      https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/viewform?usp=pp_url&entry.171178120=me@you.com&entry.134399048=555-321-1234
+    WAITLIST FORM — already connected
     ─────────────────────────────────────────────────────
-
     */
-    const FORM_ACTION = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse';
-    const ENTRY_EMAIL = 'entry.171178120';
-    const ENTRY_PHONE = 'entry.134399048';
+    const FORM_ACTION  = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse';
+    const ENTRY_EMAIL  = 'entry.171178120';
+    const ENTRY_PHONE  = 'entry.134399048';
+
+    /*
+    ─────────────────────────────────────────────────────
+    SURVEY FORM — fill in after creating the second Google Form
+    See the setup instructions in the <head> comment above.
+    ─────────────────────────────────────────────────────
+    */
+    const SURVEY_FORM_ACTION = 'YOUR_SURVEY_FORM_ACTION_URL';
+    const SURVEY_ENTRY_Q1    = 'entry.XXXXXXXXX'; // open text
+    const SURVEY_ENTRY_Q2    = 'entry.YYYYYYYYY'; // multiple choice
+    const SURVEY_ENTRY_Q3    = 'entry.ZZZZZZZZZ'; // multiple choice
 
     /* ── Validation helpers ── */
 
@@ -606,7 +930,6 @@ footer div {
       const error = document.getElementById(errorId);
       input.classList.add('input-error');
       error.textContent = message;
-      return false;
     }
 
     function clearError(inputId, errorId) {
@@ -614,7 +937,6 @@ footer div {
       const error = document.getElementById(errorId);
       input.classList.remove('input-error');
       error.textContent = '';
-      return true;
     }
 
     function validateEmail(value) {
@@ -623,39 +945,34 @@ footer div {
       const [local, domain] = value.split('@');
       if (!local) return 'Please enter the part before the @.';
       if (!domain || !domain.includes('.')) return 'Please enter a complete email address (e.g. you@example.com).';
-      return null; // valid
+      return null;
     }
 
     function validatePhone(value) {
-      if (!value) return null; // phone is optional — empty is fine
+      if (!value) return null;
       const digits = value.replace(/\D/g, '');
-      // accept 10 digits (US) or 11 if it starts with 1 (country code)
       if (digits.length === 11 && digits[0] === '1') return null;
       if (digits.length === 10) return null;
-      return 'Please enter a 10-digit phone number (digits only, e.g. 5550001234).';
+      return 'Please enter a 10-digit phone number (e.g. 5550001234).';
     }
 
-    /* clear errors on input so feedback is immediate */
     document.getElementById('email').addEventListener('input', () => {
       const val = document.getElementById('email').value.trim();
-      const err = validateEmail(val);
-      if (!err) clearError('email', 'email-error');
+      if (!validateEmail(val)) clearError('email', 'email-error');
     });
 
     document.getElementById('phone').addEventListener('input', () => {
       const val = document.getElementById('phone').value.trim();
-      const err = validatePhone(val);
-      if (!err) clearError('phone', 'phone-error');
+      if (!validatePhone(val)) clearError('phone', 'phone-error');
     });
 
-    /* ── Submit handler ── */
+    /* ── Waitlist submit ── */
     async function handleSubmit(e) {
       e.preventDefault();
 
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
 
-      // run validation
       const emailErr = validateEmail(email);
       const phoneErr = validatePhone(phone);
 
@@ -679,17 +996,49 @@ footer div {
       if (phone) body.append(ENTRY_PHONE, phone);
 
       try {
-        // no-cors: response is opaque but submission goes through
         await fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
-      } catch (_) {
-        // swallow — no-cors always resolves on success
-      }
+      } catch (_) {}
 
-      // brief pause so the spinner feels intentional
       await new Promise(r => setTimeout(r, 1100));
 
       container.style.display = 'none';
       success.classList.add('visible');
+    }
+
+    /* ── Survey submit ── */
+    async function handleSurveySubmit(e) {
+      e.preventDefault();
+
+      const q1  = document.getElementById('survey-q1').value.trim();
+      const q2El = document.querySelector('input[name="q2"]:checked');
+      const q3El = document.querySelector('input[name="q3"]:checked');
+
+      const btn = document.getElementById('survey-submit-btn');
+      btn.classList.add('loading');
+
+      const body = new FormData();
+      if (q1)  body.append(SURVEY_ENTRY_Q1, q1);
+      if (q2El) body.append(SURVEY_ENTRY_Q2, q2El.value);
+      if (q3El) body.append(SURVEY_ENTRY_Q3, q3El.value);
+
+      try {
+        await fetch(SURVEY_FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
+      } catch (_) {}
+
+      await new Promise(r => setTimeout(r, 900));
+
+      showSurveyDone();
+    }
+
+    function skipSurvey() {
+      showSurveyDone();
+    }
+
+    function showSurveyDone() {
+      document.getElementById('survey-form').style.display = 'none';
+      document.querySelector('.survey-prompt').style.display = 'none';
+      document.querySelector('.survey-sub').style.display = 'none';
+      document.getElementById('survey-done').classList.add('visible');
     }
   </script>
 

@@ -28,6 +28,7 @@
        Q3 — "How many clothing items do you think you own?" (Multiple choice)
   3. Click ⋮ → "Get pre-filled link"
   https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse?usp=pp_url
+  https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse?usp=pp_url&entry.1512875088=test&entry.64709087=Keeping+track+of+what+I+own&entry.1877331144=100%E2%80%93250&entry.171178120=test@test.com&entry.134399048=0000000000
   4. Fill in dummy values, click "Get Link", copy the URL
   5. From that URL extract:
        - SURVEY_FORM_ACTION: replace "/viewform?..." with "/formResponse"
@@ -959,27 +960,28 @@
 
 		<script>
 			/*
-    ─────────────────────────────────────────────────────
-    WAITLIST FORM — already connected
-    ─────────────────────────────────────────────────────
-    */
+			 ─────────────────────────────────────────────────────
+			 WAITLIST FORM — already connected
+			 ─────────────────────────────────────────────────────
+			 */
 			const FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
 
 			const ENTRY_EMAIL = "entry.171178120";
 			const ENTRY_PHONE = "entry.134399048";
 
 			/*
-    ─────────────────────────────────────────────────────
-    SURVEY FORM — fill in after creating the second Google Form
-    See the setup instructions in the <head> comment above.
-    ─────────────────────────────────────────────────────
-    */
+			 ─────────────────────────────────────────────────────
+			 SURVEY FORM — fill in after creating the second Google Form
+			 See the setup instructions in the <head> comment above.
+			 ─────────────────────────────────────────────────────
+			 */
 
 			const SURVEY_FORM_ACTION =
-				"https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
-			const SURVEY_ENTRY_Q1 = "entry.64709087"; // open text
-			const SURVEY_ENTRY_Q2 = "entry.1877331144"; // multiple choice
-			const SURVEY_ENTRY_Q3 = "entry.171178120"; // multiple choice
+				"https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
+			//  https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/viewform?usp=pp_url&entry.1512875088=test&entry.64709087=Keeping+track+of+what+I+own&entry.1877331144=100%E2%80%93250&entry.171178120=test@test.com&entry.134399048=0000000000
+			const SURVEY_ENTRY_Q1 = "entry.1512875088"; // open text
+			const SURVEY_ENTRY_Q2 = "entry.64709087"; // multiple choice
+			const SURVEY_ENTRY_Q3 = "entry.1877331144"; // multiple choice
 
 			/* ── Validation helpers ── */
 

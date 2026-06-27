@@ -1,15 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="./navyHangerLogoEdited.png" />
-  <title>Nothing To Wear — Join the Waitlist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="./navyHangerLogoEdited.png" />
+		<title>Nothing To Wear — Join the Waitlist</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+			rel="stylesheet"
+		/>
 
-  <!--
+		<!--
   ════════════════════════════════════════════
   WAITLIST FORM (existing)
   ════════════════════════════════════════════
@@ -24,6 +27,7 @@
        Q2 — "Which sounds most useful to you?" (Multiple choice — pick the radio options listed in the HTML)
        Q3 — "How many clothing items do you think you own?" (Multiple choice)
   3. Click ⋮ → "Get pre-filled link"
+  https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse?usp=pp_url
   4. Fill in dummy values, click "Get Link", copy the URL
   5. From that URL extract:
        - SURVEY_FORM_ACTION: replace "/viewform?..." with "/formResponse"
@@ -32,1015 +36,1075 @@
   ════════════════════════════════════════════
   -->
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		<style>
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-    :root {
-      --terracotta:  #b28675;
-      --clay:        #ab7a68;
-      --umber:       #8f6256;
-      --espresso:    #492f28;
-      --walnut:      #675647;
-      --taupe:       #847057;
-      --linen:       #faf8f5;
-      --sand:        #f3eee7;
-      --navy:        #0d1a2b;
-      --gold:        #c9a474;
-      --gold-light:  #e8c98a;
-      --serif:       'Lora', Georgia, serif;
-      --sans:        'DM Sans', system-ui, sans-serif;
-    }
+			:root {
+				--terracotta: #b28675;
+				--clay: #ab7a68;
+				--umber: #8f6256;
+				--espresso: #492f28;
+				--walnut: #675647;
+				--taupe: #847057;
+				--linen: #faf8f5;
+				--sand: #f3eee7;
+				--navy: #0d1a2b;
+				--gold: #c9a474;
+				--gold-light: #e8c98a;
+				--serif: "Lora", Georgia, serif;
+				--sans: "DM Sans", system-ui, sans-serif;
+			}
 
-    html { scroll-behavior: smooth; }
+			html {
+				scroll-behavior: smooth;
+			}
 
-    body {
-      font-family: var(--sans);
-      background: var(--linen);
-      color: var(--espresso);
-      -webkit-font-smoothing: antialiased;
-    }
+			body {
+				font-family: var(--sans);
+				background: var(--linen);
+				color: var(--espresso);
+				-webkit-font-smoothing: antialiased;
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        HERO
     ───────────────────────────────────── */
-    .hero {
-      background: var(--navy);
-      color: var(--linen);
-      padding: 88px 24px 112px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+			.hero {
+				background: var(--navy);
+				color: var(--linen);
+				padding: 88px 24px 112px;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -80px; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(201,164,116,0.10) 0%, transparent 65%);
-      pointer-events: none;
-    }
+			.hero::before {
+				content: "";
+				position: absolute;
+				top: -80px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 600px;
+				height: 600px;
+				background: radial-gradient(circle, rgba(201, 164, 116, 0.1) 0%, transparent 65%);
+				pointer-events: none;
+			}
 
-    .logo-mark {
-      display: block;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 36px;
-      position: relative;
-      z-index: 1;
-      mix-blend-mode: screen;
-      object-fit: contain;
-    }
+			.logo-mark {
+				display: block;
+				width: 120px;
+				height: 120px;
+				margin: 0 auto 36px;
+				position: relative;
+				z-index: 1;
+				mix-blend-mode: screen;
+				object-fit: contain;
+			}
 
-    .eyebrow {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
+			.eyebrow {
+				font-family: var(--sans);
+				font-size: 10.5px;
+				font-weight: 400;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--gold);
+				margin-bottom: 18px;
+				position: relative;
+				z-index: 1;
+			}
 
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(52px, 9vw, 84px);
-      font-weight: 500;
-      line-height: 1.0;
-      letter-spacing: -0.01em;
-      color: var(--linen);
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 1;
-    }
+			.hero h1 {
+				font-family: var(--serif);
+				font-size: clamp(52px, 9vw, 84px);
+				font-weight: 500;
+				line-height: 1;
+				letter-spacing: -0.01em;
+				color: var(--linen);
+				margin-bottom: 28px;
+				position: relative;
+				z-index: 1;
+			}
 
-    .hero h1 em {
-      display: block;
-      font-style: italic;
-      color: var(--gold-light);
-    }
+			.hero h1 em {
+				display: block;
+				font-style: italic;
+				color: var(--gold-light);
+			}
 
-    .hero-sub {
-      font-family: var(--sans);
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.7;
-      max-width: 500px;
-      margin: 0 auto 52px;
-      color: rgba(250,248,245,0.68);
-      position: relative;
-      z-index: 1;
-    }
+			.hero-sub {
+				font-family: var(--sans);
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 1.7;
+				max-width: 500px;
+				margin: 0 auto 52px;
+				color: rgba(250, 248, 245, 0.68);
+				position: relative;
+				z-index: 1;
+			}
 
-    .hero-cta {
-      display: inline-block;
-      padding: 14px 36px;
-      background: transparent;
-      border: 1px solid rgba(201,164,116,0.5);
-      border-radius: 2px;
-      color: var(--gold-light);
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-      position: relative;
-      z-index: 1;
-    }
+			.hero-cta {
+				display: inline-block;
+				padding: 14px 36px;
+				background: transparent;
+				border: 1px solid rgba(201, 164, 116, 0.5);
+				border-radius: 2px;
+				color: var(--gold-light);
+				font-family: var(--sans);
+				font-size: 11px;
+				font-weight: 400;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				text-decoration: none;
+				transition:
+					background 0.2s,
+					border-color 0.2s,
+					color 0.2s;
+				position: relative;
+				z-index: 1;
+			}
 
-    .hero-cta:hover {
-      background: rgba(201,164,116,0.1);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+			.hero-cta:hover {
+				background: rgba(201, 164, 116, 0.1);
+				border-color: var(--gold);
+				color: var(--gold);
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        FEATURE STRIP
     ───────────────────────────────────── */
-    .features {
-      background: var(--sand);
-      padding: 72px 32px;
-    }
+			.features {
+				background: var(--sand);
+				padding: 72px 32px;
+			}
 
-    .features-grid {
-      max-width: 920px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 48px 56px;
-    }
+			.features-grid {
+				max-width: 920px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 48px 56px;
+			}
 
-    .feature-num {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 13px;
-      color: var(--terracotta);
-      margin-bottom: 10px;
-      display: block;
-    }
+			.feature-num {
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 13px;
+				color: var(--terracotta);
+				margin-bottom: 10px;
+				display: block;
+			}
 
-    .feature-title {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--espresso);
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
+			.feature-title {
+				font-family: var(--serif);
+				font-size: 18px;
+				font-weight: 500;
+				color: var(--espresso);
+				margin-bottom: 10px;
+				line-height: 1.25;
+			}
 
-    .feature-desc {
-      font-family: var(--sans);
-      font-size: 13.5px;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--walnut);
-    }
+			.feature-desc {
+				font-family: var(--sans);
+				font-size: 13.5px;
+				font-weight: 300;
+				line-height: 1.7;
+				color: var(--walnut);
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        FORM SECTION
     ───────────────────────────────────── */
-    .form-section {
-      padding: 96px 24px 104px;
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-    }
+			.form-section {
+				padding: 96px 24px 104px;
+				max-width: 520px;
+				margin: 0 auto;
+				text-align: center;
+			}
 
-    .section-label {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 14px;
-    }
+			.section-label {
+				font-family: var(--sans);
+				font-size: 10.5px;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: var(--terracotta);
+				margin-bottom: 14px;
+			}
 
-    .form-section h2 {
-      font-family: var(--serif);
-      font-size: clamp(30px, 5vw, 42px);
-      font-weight: 500;
-      color: var(--espresso);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
+			.form-section h2 {
+				font-family: var(--serif);
+				font-size: clamp(30px, 5vw, 42px);
+				font-weight: 500;
+				color: var(--espresso);
+				line-height: 1.15;
+				margin-bottom: 14px;
+			}
 
-    .form-sub {
-      font-family: var(--sans);
-      font-size: 14.5px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--walnut);
-      margin-bottom: 44px;
-    }
+			.form-sub {
+				font-family: var(--sans);
+				font-size: 14.5px;
+				font-weight: 300;
+				line-height: 1.65;
+				color: var(--walnut);
+				margin-bottom: 44px;
+			}
 
-    /* form */
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      text-align: left;
-    }
+			/* form */
+			.form {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				text-align: left;
+			}
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+			.field {
+				display: flex;
+				flex-direction: column;
+				gap: 7px;
+			}
 
-    .field label {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--taupe);
-    }
+			.field label {
+				font-family: var(--sans);
+				font-size: 10px;
+				font-weight: 500;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--taupe);
+			}
 
-    .optional {
-      font-style: italic;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      text-transform: none;
-      font-size: 9.5px;
-      color: #c4b5a8;
-      margin-left: 5px;
-    }
+			.optional {
+				font-style: italic;
+				font-weight: 300;
+				letter-spacing: 0.04em;
+				text-transform: none;
+				font-size: 9.5px;
+				color: #c4b5a8;
+				margin-left: 5px;
+			}
 
-    .field input {
-      width: 100%;
-      padding: 13px 16px;
-      background: var(--sand);
-      border: 1px solid #dfd8cf;
-      border-radius: 3px;
-      font-family: var(--sans);
-      font-size: 14.5px;
-      font-weight: 300;
-      color: var(--espresso);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none;
-    }
+			.field input {
+				width: 100%;
+				padding: 13px 16px;
+				background: var(--sand);
+				border: 1px solid #dfd8cf;
+				border-radius: 3px;
+				font-family: var(--sans);
+				font-size: 14.5px;
+				font-weight: 300;
+				color: var(--espresso);
+				outline: none;
+				transition:
+					border-color 0.2s,
+					box-shadow 0.2s;
+				-webkit-appearance: none;
+			}
 
-    .field input::placeholder { color: #c9bdb4; }
+			.field input::placeholder {
+				color: #c9bdb4;
+			}
 
-    .field input:focus {
-      border-color: var(--terracotta);
-      box-shadow: 0 0 0 3px rgba(178,134,117,0.12);
-    }
+			.field input:focus {
+				border-color: var(--terracotta);
+				box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+			}
 
-    .field input.input-error {
-      border-color: #c0614a;
-      box-shadow: 0 0 0 3px rgba(192,97,74,0.10);
-    }
+			.field input.input-error {
+				border-color: #c0614a;
+				box-shadow: 0 0 0 3px rgba(192, 97, 74, 0.1);
+			}
 
-    .field-error {
-      display: block;
-      min-height: 18px;
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 400;
-      color: #c0614a;
-      margin-top: 4px;
-      letter-spacing: 0.01em;
-    }
+			.field-error {
+				display: block;
+				min-height: 18px;
+				font-family: var(--sans);
+				font-size: 12px;
+				font-weight: 400;
+				color: #c0614a;
+				margin-top: 4px;
+				letter-spacing: 0.01em;
+			}
 
-    /* submit button */
-    .submit-btn {
-      margin-top: 6px;
-      width: 100%;
-      padding: 16px;
-      background: var(--espresso);
-      color: var(--linen);
-      border: none;
-      border-radius: 3px;
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.25s, transform 0.12s;
-    }
+			/* submit button */
+			.submit-btn {
+				margin-top: 6px;
+				width: 100%;
+				padding: 16px;
+				background: var(--espresso);
+				color: var(--linen);
+				border: none;
+				border-radius: 3px;
+				font-family: var(--sans);
+				font-size: 11px;
+				font-weight: 500;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+				transition:
+					background 0.25s,
+					transform 0.12s;
+			}
 
-    .submit-btn:hover  { background: var(--walnut); }
-    .submit-btn:active { transform: scale(0.985); }
-    .submit-btn.loading { pointer-events: none; }
+			.submit-btn:hover {
+				background: var(--walnut);
+			}
+			.submit-btn:active {
+				transform: scale(0.985);
+			}
+			.submit-btn.loading {
+				pointer-events: none;
+			}
 
-    .btn-label {
-      display: block;
-      transition: opacity 0.2s, transform 0.2s;
-    }
+			.btn-label {
+				display: block;
+				transition:
+					opacity 0.2s,
+					transform 0.2s;
+			}
 
-    .submit-btn.loading .btn-label {
-      opacity: 0;
-      transform: translateY(-6px);
-    }
+			.submit-btn.loading .btn-label {
+				opacity: 0;
+				transform: translateY(-6px);
+			}
 
-    /* spinner */
-    .btn-spinner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
+			/* spinner */
+			.btn-spinner {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0;
+				transition: opacity 0.2s;
+			}
 
-    .submit-btn.loading .btn-spinner { opacity: 1; }
+			.submit-btn.loading .btn-spinner {
+				opacity: 1;
+			}
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
 
-    .ring {
-      width: 18px;
-      height: 18px;
-      border: 1.5px solid rgba(250,248,245,0.25);
-      border-top-color: rgba(250,248,245,0.9);
-      border-radius: 50%;
-      animation: spin 0.75s linear infinite;
-    }
+			.ring {
+				width: 18px;
+				height: 18px;
+				border: 1.5px solid rgba(250, 248, 245, 0.25);
+				border-top-color: rgba(250, 248, 245, 0.9);
+				border-radius: 50%;
+				animation: spin 0.75s linear infinite;
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        SUCCESS STATE
     ───────────────────────────────────── */
-    .success {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px 0;
-      width: 100%;
-    }
+			.success {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				padding: 16px 0;
+				width: 100%;
+			}
 
-    .success.visible { display: flex; }
+			.success.visible {
+				display: flex;
+			}
 
-    .check-circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--sand);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
-    }
+			.check-circle {
+				width: 52px;
+				height: 52px;
+				border-radius: 50%;
+				background: var(--sand);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 24px;
+				animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+			}
 
-    @keyframes popIn {
-      from { transform: scale(0.6); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
-    }
+			@keyframes popIn {
+				from {
+					transform: scale(0.6);
+					opacity: 0;
+				}
+				to {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
 
-    .success-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 500;
-      color: var(--espresso);
-      margin-bottom: 12px;
-      animation: fadeUp 0.45s 0.1s ease both;
-    }
+			.success-title {
+				font-family: var(--serif);
+				font-size: 28px;
+				font-weight: 500;
+				color: var(--espresso);
+				margin-bottom: 12px;
+				animation: fadeUp 0.45s 0.1s ease both;
+			}
 
-    .success-body {
-      font-family: var(--sans);
-      font-size: 14.5px;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--walnut);
-      text-align: center;
-      animation: fadeUp 0.45s 0.2s ease both;
-    }
+			.success-body {
+				font-family: var(--sans);
+				font-size: 14.5px;
+				font-weight: 300;
+				line-height: 1.7;
+				color: var(--walnut);
+				text-align: center;
+				animation: fadeUp 0.45s 0.2s ease both;
+			}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+			@keyframes fadeUp {
+				from {
+					opacity: 0;
+					transform: translateY(12px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        SURVEY
     ───────────────────────────────────── */
-    .survey-divider {
-      width: 40px;
-      height: 1px;
-      background: #dfd8cf;
-      margin: 36px auto;
-      animation: fadeUp 0.45s 0.3s ease both;
-    }
+			.survey-divider {
+				width: 40px;
+				height: 1px;
+				background: #dfd8cf;
+				margin: 36px auto;
+				animation: fadeUp 0.45s 0.3s ease both;
+			}
 
-    .survey-container {
-      width: 100%;
-      text-align: left;
-      animation: fadeUp 0.45s 0.35s ease both;
-    }
+			.survey-container {
+				width: 100%;
+				text-align: left;
+				animation: fadeUp 0.45s 0.35s ease both;
+			}
 
-    .survey-prompt {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--espresso);
-      text-align: center;
-      margin-bottom: 6px;
-    }
+			.survey-prompt {
+				font-family: var(--serif);
+				font-size: 20px;
+				font-weight: 500;
+				color: var(--espresso);
+				text-align: center;
+				margin-bottom: 6px;
+			}
 
-    .survey-sub {
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--taupe);
-      text-align: center;
-      margin-bottom: 32px;
-    }
+			.survey-sub {
+				font-family: var(--sans);
+				font-size: 13px;
+				font-weight: 300;
+				color: var(--taupe);
+				text-align: center;
+				margin-bottom: 32px;
+			}
 
-    .survey-form {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
+			.survey-form {
+				display: flex;
+				flex-direction: column;
+				gap: 28px;
+			}
 
-    .survey-question {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+			.survey-question {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
 
-    .question-label {
-      font-family: var(--sans);
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--espresso);
-      line-height: 1.45;
-    }
+			.question-label {
+				font-family: var(--sans);
+				font-size: 13.5px;
+				font-weight: 500;
+				color: var(--espresso);
+				line-height: 1.45;
+			}
 
-    .question-hint {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--taupe);
-      line-height: 1.5;
-      margin-top: -6px;
-    }
+			.question-hint {
+				font-family: var(--sans);
+				font-size: 12px;
+				font-weight: 300;
+				color: var(--taupe);
+				line-height: 1.5;
+				margin-top: -6px;
+			}
 
-    .survey-textarea {
-      width: 100%;
-      padding: 13px 16px;
-      background: var(--sand);
-      border: 1px solid #dfd8cf;
-      border-radius: 3px;
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--espresso);
-      outline: none;
-      resize: vertical;
-      min-height: 100px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none;
-    }
+			.survey-textarea {
+				width: 100%;
+				padding: 13px 16px;
+				background: var(--sand);
+				border: 1px solid #dfd8cf;
+				border-radius: 3px;
+				font-family: var(--sans);
+				font-size: 14px;
+				font-weight: 300;
+				color: var(--espresso);
+				outline: none;
+				resize: vertical;
+				min-height: 100px;
+				transition:
+					border-color 0.2s,
+					box-shadow 0.2s;
+				-webkit-appearance: none;
+			}
 
-    .survey-textarea::placeholder { color: #c9bdb4; }
+			.survey-textarea::placeholder {
+				color: #c9bdb4;
+			}
 
-    .survey-textarea:focus {
-      border-color: var(--terracotta);
-      box-shadow: 0 0 0 3px rgba(178,134,117,0.12);
-    }
+			.survey-textarea:focus {
+				border-color: var(--terracotta);
+				box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+			}
 
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+			.radio-group {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
 
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      padding: 11px 14px;
-      border-radius: 3px;
-      border: 1px solid #dfd8cf;
-      background: var(--sand);
-      transition: border-color 0.18s, background 0.18s;
-    }
+			.radio-option {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				cursor: pointer;
+				padding: 11px 14px;
+				border-radius: 3px;
+				border: 1px solid #dfd8cf;
+				background: var(--sand);
+				transition:
+					border-color 0.18s,
+					background 0.18s;
+			}
 
-    .radio-option:hover {
-      border-color: var(--terracotta);
-      background: #f0ebe3;
-    }
+			.radio-option:hover {
+				border-color: var(--terracotta);
+				background: #f0ebe3;
+			}
 
-    .radio-option input[type="radio"] {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
-      border: 1.5px solid #c4b5a8;
-      border-radius: 50%;
-      flex-shrink: 0;
-      transition: border-color 0.18s;
-      position: relative;
-      cursor: pointer;
-    }
+			.radio-option input[type="radio"] {
+				appearance: none;
+				-webkit-appearance: none;
+				width: 16px;
+				height: 16px;
+				border: 1.5px solid #c4b5a8;
+				border-radius: 50%;
+				flex-shrink: 0;
+				transition: border-color 0.18s;
+				position: relative;
+				cursor: pointer;
+			}
 
-    .radio-option input[type="radio"]::after {
-      content: '';
-      position: absolute;
-      inset: 3px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
+			.radio-option input[type="radio"]::after {
+				content: "";
+				position: absolute;
+				inset: 3px;
+				border-radius: 50%;
+				background: var(--terracotta);
+				opacity: 0;
+				transition: opacity 0.15s;
+			}
 
-    .radio-option input[type="radio"]:checked {
-      border-color: var(--terracotta);
-    }
+			.radio-option input[type="radio"]:checked {
+				border-color: var(--terracotta);
+			}
 
-    .radio-option input[type="radio"]:checked::after {
-      opacity: 1;
-    }
+			.radio-option input[type="radio"]:checked::after {
+				opacity: 1;
+			}
 
-    .radio-option:has(input:checked) {
-      border-color: var(--terracotta);
-      background: rgba(178,134,117,0.07);
-    }
+			.radio-option:has(input:checked) {
+				border-color: var(--terracotta);
+				background: rgba(178, 134, 117, 0.07);
+			}
 
-    .radio-label {
-      font-family: var(--sans);
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--espresso);
-      line-height: 1.4;
-      cursor: pointer;
-    }
+			.radio-label {
+				font-family: var(--sans);
+				font-size: 13.5px;
+				font-weight: 300;
+				color: var(--espresso);
+				line-height: 1.4;
+				cursor: pointer;
+			}
 
-    .survey-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 4px;
-    }
+			.survey-actions {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				margin-top: 4px;
+			}
 
-    .skip-link {
-      text-align: center;
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 400;
-      color: #c4b5a8;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.18s;
-    }
+			.skip-link {
+				text-align: center;
+				font-family: var(--sans);
+				font-size: 12px;
+				font-weight: 400;
+				color: #c4b5a8;
+				letter-spacing: 0.05em;
+				cursor: pointer;
+				background: none;
+				border: none;
+				padding: 4px;
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				transition: color 0.18s;
+			}
 
-    .skip-link:hover { color: var(--taupe); }
+			.skip-link:hover {
+				color: var(--taupe);
+			}
 
-    /* survey done state */
-    .survey-done {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 24px 0 8px;
-      text-align: center;
-      animation: fadeUp 0.4s ease both;
-    }
+			/* survey done state */
+			.survey-done {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+				padding: 24px 0 8px;
+				text-align: center;
+				animation: fadeUp 0.4s ease both;
+			}
 
-    .survey-done.visible { display: flex; }
+			.survey-done.visible {
+				display: flex;
+			}
 
-    .survey-done-title {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--espresso);
-    }
+			.survey-done-title {
+				font-family: var(--serif);
+				font-size: 20px;
+				font-weight: 500;
+				color: var(--espresso);
+			}
 
-    .survey-done-body {
-      font-family: var(--sans);
-      font-size: 13.5px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--walnut);
-    }
+			.survey-done-body {
+				font-family: var(--sans);
+				font-size: 13.5px;
+				font-weight: 300;
+				line-height: 1.65;
+				color: var(--walnut);
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        FOOTER
     ───────────────────────────────────── */
-    footer {
-      padding: 28px 24px;
-      text-align: center;
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--taupe);
-      border-top: 1px solid #e5dfd6;
-    }
+			footer {
+				padding: 28px 24px;
+				text-align: center;
+				font-family: var(--sans);
+				font-size: 11px;
+				letter-spacing: 0.1em;
+				color: var(--taupe);
+				border-top: 1px solid #e5dfd6;
+			}
 
-    footer div {
-      padding-top: 10px;
-    }
+			footer div {
+				padding-top: 10px;
+			}
 
-    /* ─────────────────────────────────────
+			/* ─────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────── */
-    @media (max-width: 520px) {
-      .hero { padding: 72px 20px 88px; }
-      .features { padding: 56px 20px; }
-      .features-grid {
-        padding: 0px 10px;
-        display: flex;
-        flex-direction: column;
-      }
-      .form-section { padding: 72px 25px 80px; }
-    }
+			@media (max-width: 520px) {
+				.hero {
+					padding: 72px 20px 88px;
+				}
+				.features {
+					padding: 56px 20px;
+				}
+				.features-grid {
+					padding: 0px 10px;
+					display: flex;
+					flex-direction: column;
+				}
+				.form-section {
+					padding: 72px 25px 80px;
+				}
+			}
 
-    @media (max-width: 360px) {
-      .features-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
+			@media (max-width: 360px) {
+				.features-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ── HERO ── -->
+		<section class="hero">
+			<img src="./navyHangerLogoEdited.png" class="logo-mark" alt="logo" />
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <img src="./navyHangerLogoEdited.png" class="logo-mark" alt="logo">
+			<p class="eyebrow">Wardrobe Inventory &amp; Logistics</p>
 
-    <p class="eyebrow">Wardrobe Inventory &amp; Logistics</p>
+			<h1>Nothing<em>To Wear</em></h1>
 
-    <h1>Nothing<em>To Wear</em></h1>
+			<p class="hero-sub">
+				Your closet, fully accounted for. Know what you own, where it is, and what state it's in &amp; Stop feeling like you have
+				Nothing To Wear!
+			</p>
 
-    <p class="hero-sub">
-      Your closet, fully accounted for. Know what you own,
-      where it is, and what state it's in &amp; Stop feeling like you have Nothing
-      To Wear!
-    </p>
+			<a href="#waitlist" class="hero-cta">Join the Waitlist</a>
+		</section>
 
-    <a href="#waitlist" class="hero-cta">Join the Waitlist</a>
-  </section>
+		<!-- ── FEATURES ── -->
+		<section class="features">
+			<div class="features-grid">
+				<div class="feature">
+					<span class="feature-num">01</span>
+					<h3 class="feature-title">Track every item's state</h3>
+					<p class="feature-desc">
+						Clean, dirty, at the dry cleaner, traveling, on loan. Your wardrobe doesn't stop at your doorstep.
+					</p>
+				</div>
 
-  <!-- ── FEATURES ── -->
-  <section class="features">
-    <div class="features-grid">
+				<div class="feature">
+					<span class="feature-num">02</span>
+					<h3 class="feature-title">Know where things are</h3>
+					<p class="feature-desc">Home, storage unit, a friend's suitcase. Location and status tracked in one place.</p>
+				</div>
 
-      <div class="feature">
-        <span class="feature-num">01</span>
-        <h3 class="feature-title">Track every item's state</h3>
-        <p class="feature-desc">Clean, dirty, at the dry cleaner, traveling, on loan. Your wardrobe doesn't stop at your doorstep.</p>
-      </div>
+				<div class="feature">
+					<span class="feature-num">03</span>
+					<h3 class="feature-title">Auto-import from Gmail</h3>
+					<p class="feature-desc">
+						Purchase receipts become inventory automatically. New pieces land in your closet the day they ship.
+					</p>
+				</div>
 
-      <div class="feature">
-        <span class="feature-num">02</span>
-        <h3 class="feature-title">Know where things are</h3>
-        <p class="feature-desc">Home, storage unit, a friend's suitcase. Location and status tracked in one place.</p>
-      </div>
+				<div class="feature">
+					<span class="feature-num">04</span>
+					<h3 class="feature-title">Share &amp; borrow with trust</h3>
+					<p class="feature-desc">
+						Lend pieces and borrow from people you trust — with full visibility into who has what, always.
+					</p>
+				</div>
+			</div>
+		</section>
 
-      <div class="feature">
-        <span class="feature-num">03</span>
-        <h3 class="feature-title">Auto-import from Gmail</h3>
-        <p class="feature-desc">Purchase receipts become inventory automatically. New pieces land in your closet the day they ship.</p>
-      </div>
+		<!-- ── WAITLIST FORM ── -->
+		<section class="form-section" id="waitlist">
+			<div id="form-container">
+				<p class="section-label">Early Access</p>
+				<h2>Join the Waitlist</h2>
+				<p class="form-sub">Be among the first to know when Nothing To Wear opens its doors.</p>
 
-      <div class="feature">
-        <span class="feature-num">04</span>
-        <h3 class="feature-title">Share &amp; borrow with trust</h3>
-        <p class="feature-desc">Lend pieces and borrow from people you trust — with full visibility into who has what, always.</p>
-      </div>
+				<form class="form" id="waitlist-form" onsubmit="handleSubmit(event)" novalidate>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" />
+						<span class="field-error" id="email-error" role="alert"></span>
+					</div>
 
-    </div>
-  </section>
+					<div class="field">
+						<label for="phone">
+							Phone
+							<span class="optional">optional</span>
+						</label>
+						<input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+						<span class="field-error" id="phone-error" role="alert"></span>
+					</div>
 
-  <!-- ── WAITLIST FORM ── -->
-  <section class="form-section" id="waitlist">
+					<button type="submit" class="submit-btn" id="submit-btn">
+						<span class="btn-label">Reserve My Spot</span>
+						<span class="btn-spinner" aria-hidden="true">
+							<span class="ring"></span>
+						</span>
+					</button>
+				</form>
+			</div>
 
-    <div id="form-container">
-      <p class="section-label">Early Access</p>
-      <h2>Join the Waitlist</h2>
-      <p class="form-sub">
-        Be among the first to know when Nothing To Wear opens its doors.
-      </p>
+			<!-- ── SUCCESS + SURVEY ── -->
+			<div class="success" id="success" role="alert" aria-live="polite">
+				<!-- Confirmation -->
+				<div class="check-circle">
+					<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+						<path
+							d="M4.5 11.5l4.5 4.5 8.5-9"
+							stroke="#b28675"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</div>
+				<p class="success-title">You're on the list.</p>
+				<p class="success-body">
+					Congrats on joining the waitlist for Nothing To Wear.<br />
+					You'll be emailed as soon as we're ready for you.
+				</p>
 
-      <form class="form" id="waitlist-form" onsubmit="handleSubmit(event)" novalidate>
-        <div class="field">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your@email.com"
-            autocomplete="email"
-          />
-          <span class="field-error" id="email-error" role="alert"></span>
-        </div>
+				<!-- Divider into survey -->
+				<div class="survey-divider"></div>
 
-        <div class="field">
-          <label for="phone">
-            Phone
-            <span class="optional">optional</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="(555) 000-0000"
-            autocomplete="tel"
-          />
-          <span class="field-error" id="phone-error" role="alert"></span>
-        </div>
+				<!-- Survey -->
+				<div class="survey-container" id="survey-container">
+					<p class="survey-prompt">Want to participate in user research?</p>
+					<p class="survey-sub">3 quick questions — takes under 2 minutes.</p>
 
-        <button type="submit" class="submit-btn" id="submit-btn">
-          <span class="btn-label">Reserve My Spot</span>
-          <span class="btn-spinner" aria-hidden="true">
-            <span class="ring"></span>
-          </span>
-        </button>
-      </form>
-    </div>
+					<form class="survey-form" id="survey-form" onsubmit="handleSurveySubmit(event)" novalidate>
+						<!-- Q1: Open text -->
+						<div class="survey-question">
+							<label class="question-label" for="survey-q1">
+								What's the biggest frustration you have with your wardrobe today?
+							</label>
+							<p class="question-hint">Your answer in your own words — no wrong answers.</p>
+							<textarea
+								class="survey-textarea"
+								id="survey-q1"
+								name="q1"
+								placeholder="e.g. I forget what I own, nothing matches, laundry piles up…"
+							></textarea>
+						</div>
 
-    <!-- ── SUCCESS + SURVEY ── -->
-    <div class="success" id="success" role="alert" aria-live="polite">
+						<!-- Q2: Multiple choice -->
+						<div class="survey-question">
+							<label class="question-label">Which sounds most useful to you?</label>
+							<div class="radio-group" role="radiogroup" aria-label="Most useful feature">
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Keeping track of what I own" />
+									<span class="radio-label">Keeping track of what I own</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Organizing clothing by category" />
+									<span class="radio-label">Organizing clothing by category</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Tracking laundry and garment care" />
+									<span class="radio-label">Tracking laundry and garment care</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Travel packing" />
+									<span class="radio-label">Travel packing</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Outfit planning" />
+									<span class="radio-label">Outfit planning</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Understanding my wardrobe habits" />
+									<span class="radio-label">Understanding my wardrobe habits</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Borrowing and sharing clothes" />
+									<span class="radio-label">Borrowing and sharing clothes</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q2" value="Learning about fabrics and garment care" />
+									<span class="radio-label">Learning about fabrics and garment care</span>
+								</label>
+							</div>
+						</div>
 
-      <!-- Confirmation -->
-      <div class="check-circle">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-          <path d="M4.5 11.5l4.5 4.5 8.5-9" stroke="#b28675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <p class="success-title">You're on the list.</p>
-      <p class="success-body">
-        Congrats on joining the waitlist for Nothing To Wear.<br>
-        You'll be emailed as soon as we're ready for you.
-      </p>
+						<!-- Q3: Wardrobe size -->
+						<div class="survey-question">
+							<label class="question-label">How many clothing items do you think you own?</label>
+							<div class="radio-group" role="radiogroup" aria-label="Number of clothing items">
+								<label class="radio-option">
+									<input type="radio" name="q3" value="Under 50" />
+									<span class="radio-label">Under 50</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q3" value="50–100" />
+									<span class="radio-label">50–100</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q3" value="100–250" />
+									<span class="radio-label">100–250</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q3" value="250–500" />
+									<span class="radio-label">250–500</span>
+								</label>
+								<label class="radio-option">
+									<input type="radio" name="q3" value="500+" />
+									<span class="radio-label">500+</span>
+								</label>
+							</div>
+						</div>
 
-      <!-- Divider into survey -->
-      <div class="survey-divider"></div>
+						<div class="survey-actions">
+							<button type="submit" class="submit-btn" id="survey-submit-btn">
+								<span class="btn-label">Submit</span>
+								<span class="btn-spinner" aria-hidden="true">
+									<span class="ring"></span>
+								</span>
+							</button>
+							<button type="button" class="skip-link" onclick="skipSurvey()">No thanks, skip</button>
+						</div>
+					</form>
 
-      <!-- Survey -->
-      <div class="survey-container" id="survey-container">
-        <p class="survey-prompt">Want to participate in user research?</p>
-        <p class="survey-sub">3 quick questions — takes under 2 minutes.</p>
+					<!-- Survey done -->
+					<div class="survey-done" id="survey-done">
+						<p class="survey-done-title">Thank you.</p>
+						<p class="survey-done-body">
+							Your input goes directly into shaping Nothing To Wear.<br />
+							We'll be in touch.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-        <form class="survey-form" id="survey-form" onsubmit="handleSurveySubmit(event)" novalidate>
+		<!-- ── FOOTER ── -->
+		<footer>
+			&copy; 2026 Nothing To Wear &nbsp;&middot;&nbsp; Coming Soon
+			<div>Founded by Arianna Choza</div>
+		</footer>
 
-          <!-- Q1: Open text -->
-          <div class="survey-question">
-            <label class="question-label" for="survey-q1">
-              What's the biggest frustration you have with your wardrobe today?
-            </label>
-            <p class="question-hint">Your answer in your own words — no wrong answers.</p>
-            <textarea
-              class="survey-textarea"
-              id="survey-q1"
-              name="q1"
-              placeholder="e.g. I forget what I own, nothing matches, laundry piles up…"
-            ></textarea>
-          </div>
-
-          <!-- Q2: Multiple choice -->
-          <div class="survey-question">
-            <label class="question-label">Which sounds most useful to you?</label>
-            <div class="radio-group" role="radiogroup" aria-label="Most useful feature">
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Keeping track of what I own" />
-                <span class="radio-label">Keeping track of what I own</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Organizing clothing by category" />
-                <span class="radio-label">Organizing clothing by category</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Tracking laundry and garment care" />
-                <span class="radio-label">Tracking laundry and garment care</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Travel packing" />
-                <span class="radio-label">Travel packing</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Outfit planning" />
-                <span class="radio-label">Outfit planning</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Understanding my wardrobe habits" />
-                <span class="radio-label">Understanding my wardrobe habits</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Borrowing and sharing clothes" />
-                <span class="radio-label">Borrowing and sharing clothes</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q2" value="Learning about fabrics and garment care" />
-                <span class="radio-label">Learning about fabrics and garment care</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Q3: Wardrobe size -->
-          <div class="survey-question">
-            <label class="question-label">How many clothing items do you think you own?</label>
-            <div class="radio-group" role="radiogroup" aria-label="Number of clothing items">
-              <label class="radio-option">
-                <input type="radio" name="q3" value="Under 50" />
-                <span class="radio-label">Under 50</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q3" value="50–100" />
-                <span class="radio-label">50–100</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q3" value="100–250" />
-                <span class="radio-label">100–250</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q3" value="250–500" />
-                <span class="radio-label">250–500</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="q3" value="500+" />
-                <span class="radio-label">500+</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="survey-actions">
-            <button type="submit" class="submit-btn" id="survey-submit-btn">
-              <span class="btn-label">Submit</span>
-              <span class="btn-spinner" aria-hidden="true">
-                <span class="ring"></span>
-              </span>
-            </button>
-            <button type="button" class="skip-link" onclick="skipSurvey()">No thanks, skip</button>
-          </div>
-
-        </form>
-
-        <!-- Survey done -->
-        <div class="survey-done" id="survey-done">
-          <p class="survey-done-title">Thank you.</p>
-          <p class="survey-done-body">
-            Your input goes directly into shaping Nothing To Wear.<br>
-            We'll be in touch.
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer>
-    &copy; 2026 Nothing To Wear &nbsp;&middot;&nbsp; Coming Soon
-    <div>Founded by Arianna Choza</div>
-  </footer>
-
-  <script>
-    /*
+		<script>
+			/*
     ─────────────────────────────────────────────────────
     WAITLIST FORM — already connected
     ─────────────────────────────────────────────────────
     */
-    const FORM_ACTION  = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse';
-    const ENTRY_EMAIL  = 'entry.171178120';
-    const ENTRY_PHONE  = 'entry.134399048';
+			const FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
 
-    /*
+			const ENTRY_EMAIL = "entry.171178120";
+			const ENTRY_PHONE = "entry.134399048";
+
+			/*
     ─────────────────────────────────────────────────────
     SURVEY FORM — fill in after creating the second Google Form
     See the setup instructions in the <head> comment above.
     ─────────────────────────────────────────────────────
     */
-    const SURVEY_FORM_ACTION = 'YOUR_SURVEY_FORM_ACTION_URL';
-    const SURVEY_ENTRY_Q1    = 'entry.XXXXXXXXX'; // open text
-    const SURVEY_ENTRY_Q2    = 'entry.YYYYYYYYY'; // multiple choice
-    const SURVEY_ENTRY_Q3    = 'entry.ZZZZZZZZZ'; // multiple choice
 
-    /* ── Validation helpers ── */
+			const SURVEY_FORM_ACTION = "YOUR_SURVEY_FORM_ACTION_URL";
+			const SURVEY_ENTRY_Q1 = "entry.64709087"; // open text
+			const SURVEY_ENTRY_Q2 = "entry.1877331144"; // multiple choice
+			const SURVEY_ENTRY_Q3 = "entry.171178120"; // multiple choice
 
-    function setError(inputId, errorId, message) {
-      const input = document.getElementById(inputId);
-      const error = document.getElementById(errorId);
-      input.classList.add('input-error');
-      error.textContent = message;
-    }
+			/* ── Validation helpers ── */
 
-    function clearError(inputId, errorId) {
-      const input = document.getElementById(inputId);
-      const error = document.getElementById(errorId);
-      input.classList.remove('input-error');
-      error.textContent = '';
-    }
+			function setError(inputId, errorId, message) {
+				const input = document.getElementById(inputId);
+				const error = document.getElementById(errorId);
+				input.classList.add("input-error");
+				error.textContent = message;
+			}
 
-    function validateEmail(value) {
-      if (!value) return 'Email is required.';
-      if (!value.includes('@')) return 'Please include an @ in your email address.';
-      const [local, domain] = value.split('@');
-      if (!local) return 'Please enter the part before the @.';
-      if (!domain || !domain.includes('.')) return 'Please enter a complete email address (e.g. you@example.com).';
-      return null;
-    }
+			function clearError(inputId, errorId) {
+				const input = document.getElementById(inputId);
+				const error = document.getElementById(errorId);
+				input.classList.remove("input-error");
+				error.textContent = "";
+			}
 
-    function validatePhone(value) {
-      if (!value) return null;
-      const digits = value.replace(/\D/g, '');
-      if (digits.length === 11 && digits[0] === '1') return null;
-      if (digits.length === 10) return null;
-      return 'Please enter a 10-digit phone number (e.g. 5550001234).';
-    }
+			function validateEmail(value) {
+				if (!value) return "Email is required.";
+				if (!value.includes("@")) return "Please include an @ in your email address.";
+				const [local, domain] = value.split("@");
+				if (!local) return "Please enter the part before the @.";
+				if (!domain || !domain.includes(".")) return "Please enter a complete email address (e.g. you@example.com).";
+				return null;
+			}
 
-    document.getElementById('email').addEventListener('input', () => {
-      const val = document.getElementById('email').value.trim();
-      if (!validateEmail(val)) clearError('email', 'email-error');
-    });
+			function validatePhone(value) {
+				if (!value) return null;
+				const digits = value.replace(/\D/g, "");
+				if (digits.length === 11 && digits[0] === "1") return null;
+				if (digits.length === 10) return null;
+				return "Please enter a 10-digit phone number (e.g. 5550001234).";
+			}
 
-    document.getElementById('phone').addEventListener('input', () => {
-      const val = document.getElementById('phone').value.trim();
-      if (!validatePhone(val)) clearError('phone', 'phone-error');
-    });
+			document.getElementById("email").addEventListener("input", () => {
+				const val = document.getElementById("email").value.trim();
+				if (!validateEmail(val)) clearError("email", "email-error");
+			});
 
-    /* ── Waitlist submit ── */
-    async function handleSubmit(e) {
-      e.preventDefault();
+			document.getElementById("phone").addEventListener("input", () => {
+				const val = document.getElementById("phone").value.trim();
+				if (!validatePhone(val)) clearError("phone", "phone-error");
+			});
 
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+			/* ── Waitlist submit ── */
+			async function handleSubmit(e) {
+				e.preventDefault();
 
-      const emailErr = validateEmail(email);
-      const phoneErr = validatePhone(phone);
+				const email = document.getElementById("email").value.trim();
+				const phone = document.getElementById("phone").value.trim();
 
-      let valid = true;
-      if (emailErr) { setError('email', 'email-error', emailErr); valid = false; }
-      else           { clearError('email', 'email-error'); }
+				const emailErr = validateEmail(email);
+				const phoneErr = validatePhone(phone);
 
-      if (phoneErr) { setError('phone', 'phone-error', phoneErr); valid = false; }
-      else          { clearError('phone', 'phone-error'); }
+				let valid = true;
+				if (emailErr) {
+					setError("email", "email-error", emailErr);
+					valid = false;
+				} else {
+					clearError("email", "email-error");
+				}
 
-      if (!valid) return;
+				if (phoneErr) {
+					setError("phone", "phone-error", phoneErr);
+					valid = false;
+				} else {
+					clearError("phone", "phone-error");
+				}
 
-      const btn       = document.getElementById('submit-btn');
-      const container = document.getElementById('form-container');
-      const success   = document.getElementById('success');
+				if (!valid) return;
 
-      btn.classList.add('loading');
+				const btn = document.getElementById("submit-btn");
+				const container = document.getElementById("form-container");
+				const success = document.getElementById("success");
 
-      const body = new FormData();
-      body.append(ENTRY_EMAIL, email);
-      if (phone) body.append(ENTRY_PHONE, phone);
+				btn.classList.add("loading");
 
-      try {
-        await fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
-      } catch (_) {}
+				const body = new FormData();
+				body.append(ENTRY_EMAIL, email);
+				if (phone) body.append(ENTRY_PHONE, phone);
 
-      await new Promise(r => setTimeout(r, 1100));
+				try {
+					await fetch(FORM_ACTION, { method: "POST", mode: "no-cors", body });
+				} catch (_) {}
 
-      container.style.display = 'none';
-      success.classList.add('visible');
-    }
+				await new Promise((r) => setTimeout(r, 1100));
 
-    /* ── Survey submit ── */
-    async function handleSurveySubmit(e) {
-      e.preventDefault();
+				container.style.display = "none";
+				success.classList.add("visible");
+			}
 
-      const q1  = document.getElementById('survey-q1').value.trim();
-      const q2El = document.querySelector('input[name="q2"]:checked');
-      const q3El = document.querySelector('input[name="q3"]:checked');
+			/* ── Survey submit ── */
+			async function handleSurveySubmit(e) {
+				e.preventDefault();
 
-      const btn = document.getElementById('survey-submit-btn');
-      btn.classList.add('loading');
+				const q1 = document.getElementById("survey-q1").value.trim();
+				const q2El = document.querySelector('input[name="q2"]:checked');
+				const q3El = document.querySelector('input[name="q3"]:checked');
 
-      const body = new FormData();
-      if (q1)  body.append(SURVEY_ENTRY_Q1, q1);
-      if (q2El) body.append(SURVEY_ENTRY_Q2, q2El.value);
-      if (q3El) body.append(SURVEY_ENTRY_Q3, q3El.value);
+				const btn = document.getElementById("survey-submit-btn");
+				btn.classList.add("loading");
 
-      try {
-        await fetch(SURVEY_FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
-      } catch (_) {}
+				const body = new FormData();
+				if (q1) body.append(SURVEY_ENTRY_Q1, q1);
+				if (q2El) body.append(SURVEY_ENTRY_Q2, q2El.value);
+				if (q3El) body.append(SURVEY_ENTRY_Q3, q3El.value);
 
-      await new Promise(r => setTimeout(r, 900));
+				try {
+					await fetch(SURVEY_FORM_ACTION, { method: "POST", mode: "no-cors", body });
+				} catch (_) {}
 
-      showSurveyDone();
-    }
+				await new Promise((r) => setTimeout(r, 900));
 
-    function skipSurvey() {
-      showSurveyDone();
-    }
+				showSurveyDone();
+			}
 
-    function showSurveyDone() {
-      document.getElementById('survey-form').style.display = 'none';
-      document.querySelector('.survey-prompt').style.display = 'none';
-      document.querySelector('.survey-sub').style.display = 'none';
-      document.getElementById('survey-done').classList.add('visible');
-    }
-  </script>
+			function skipSurvey() {
+				showSurveyDone();
+			}
 
-</body>
+			function showSurveyDone() {
+				document.getElementById("survey-form").style.display = "none";
+				document.querySelector(".survey-prompt").style.display = "none";
+				document.querySelector(".survey-sub").style.display = "none";
+				document.getElementById("survey-done").classList.add("visible");
+			}
+		</script>
+	</body>
 </html>

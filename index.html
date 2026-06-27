@@ -1027,6 +1027,12 @@
 			});
 
 			/* ── Waitlist submit ── */
+			/* remember the waitlist answers so the survey submission can
+			   re-send them — Email is a REQUIRED field on the shared Google
+			   Form, so any submission that omits it is silently rejected. */
+			let joinedEmail = "";
+			let joinedPhone = "";
+
 			async function handleSubmit(e) {
 				e.preventDefault();
 
@@ -1052,6 +1058,9 @@
 				}
 
 				if (!valid) return;
+
+				joinedEmail = email;
+				joinedPhone = phone;
 
 				const btn = document.getElementById("submit-btn");
 				const container = document.getElementById("form-container");
@@ -1085,6 +1094,10 @@
 				btn.classList.add("loading");
 
 				const body = new FormData();
+				// Email is required on the form — always include it so the
+				// survey response is accepted and tied to this person.
+				body.append(ENTRY_EMAIL, joinedEmail);
+				if (joinedPhone) body.append(ENTRY_PHONE, joinedPhone);
 				if (q1) body.append(SURVEY_ENTRY_Q1, q1);
 				if (q2El) body.append(SURVEY_ENTRY_Q2, q2El.value);
 				if (q3El) body.append(SURVEY_ENTRY_Q3, q3El.value);
